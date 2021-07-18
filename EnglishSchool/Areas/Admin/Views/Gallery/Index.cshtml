@@ -1,0 +1,27 @@
+﻿@using EnglishSchool.Data.Entities;
+@model IQueryable<EnglishSchool.Data.Entities.Gallery>
+@{
+    ViewData["Title"] = "HomePage";
+}
+<div id="top">
+    <div id="gallery">
+    <a asp-area="Admin" asp-controller="Gallery" asp-action="GalleryEdit">Новое фото</a>
+    </div>
+    <div>
+        @foreach (Gallery entity in Model)
+        {
+            <div class="img">
+                <img src="@entity.ImageURL" alt="">
+                <span>@entity.Title</span>
+                <br />
+                |
+                <a asp-area="Admin" asp-controller="Gallery" asp-action="GalleryEdit" asp-route-id="@entity.Id">редактировать</a>
+                |
+                <form method="post" asp-controller="Gallery" asp-action="DeleteImage">
+                    <input type="hidden" name="id" value="@entity.Id" />
+                    <input type="submit" value="удалить" />
+                </form>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    @await Html.PartialAsync("MetaTagsPartial")
+    @await Html.PartialAsync("CssPartial")
+</head>
+<body>
+    <div id="page-wrapper">
+        @await Html.PartialAsync("HeaderPartial")
+        <div>
+            @RenderBody()
+        </div>
+        @*<div id="top">
+                <h1></h1>
+                <h3></h3>
+            </div>
+            <div id="activities">
+                <div class="intro">
+                    <h2>Наши услуги помогут вам!</h2>
+                    <span>Большой выбор всего, что может вам пригодиться</span>
+                </div>
+                <div class="text">
+                    <span>jsldkfj;kjglk;dgj;djfg;ljslgfsldjljgdlkfjlsjg;</span>
+                </div>
+            </div>
+
+            <div id="gallery">
+                <h2>Преимущества</h2>
+                <h4>С нами проще</h4>
+
+                <div class="img">
+                    <img src="https://i.ytimg.com/vi/5bRGDpVe5tc/maxresdefault.jpg" alt="">
+                    <span>Программирование на C#</span>
+                </div>
+                <div class="img">
+                    <img src="https://pbs.twimg.com/media/DLwlMc7UIAAWWBc.jpg" alt="">
+                    <span>Сайты на ASPNET Core MVC</span>
+                </div>
+            </div>*@
+
+        <!--
+        <div id="request" onclick="">
+          <center><h5>Оставить заявку</h5></center>
+          <div id="request_inner">
+            <form id="form_input">
+              <label for="name"> Имя <span>*</span></label><br>
+              <input type="text" placeholder="Введите имя" name="name" id="name"><br>
+              <label for="email"> Ваша почта <span>*</span></label><br>
+              <input type="email" placeholder="Введите email" name="email" id="email"><br>
+              <label for="message"> Сообщение <span>*</span></label><br>
+              <textarea placeholder="Введите ваше сообщение" name="message" id="message"></textarea><br>
+              <div id="mess_end" class="btn">Отправить</div>
+            </form>
+          </div>
+        </div> -->
+        @*<div id="faq">
+                <div>
+                    <span class="title">Оплата</span>
+                    <span class="heading">Как будет прохожить оплата?</span>
+                    <p>fdlkgkjdgkljdsfgkjf</p>
+                    <span class="heading">Как будет прохожить оплата?</span>
+                    <p>fdlkgkjdgkljdsfgkjf</p>
+                    <span class="heading">Как будет прохожить оплата?</span>
+                    <p>fdlkgkjdgkljdsfgkjf</p>
+                </div>
+                <div>
+                    <span class="title">Информация</span>
+                    <span class="heading">Что входит в услуги сервиса?</span>
+                    <p>fdlkgkjdgkljdsfgkjf</p>
+                    <span class="heading">Что входит в услуги сервиса?</span>
+                    <p>fdlkgkjdgkljdsfgkjf</p>
+                    <span class="heading">Что входит в услуги сервиса?</span>
+                    <p>fdlkgkjdgkljdsfgkjf</p>
+                </div>
+                <div>
+                    <span class="title">Гарантии</span>
+                    <span class="heading">Какие гарантии есть?</span>
+                    <p>fdlkgkjdgkljdsfgkjf</p>
+                    <span class="heading">Какие гарантии есть?</span>
+                    <p>fdlkgkjdgkljdsfgkjf</p>
+                    <span class="heading">Какие гарантии есть?</span>
+                    <p>fdlkgkjdgkljdsfgkjf</p>
+                </div>
+            </div>*@
+    </div>
+    @await Html.PartialAsync("ScriptsPartial")
+</body>
+</html>

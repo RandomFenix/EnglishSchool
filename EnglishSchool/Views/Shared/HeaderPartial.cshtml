@@ -1,0 +1,16 @@
+﻿<header>
+    <div id="contacts">
+        <span>@Config.CompanyPhone</span>
+        <span>@Config.CompanyEmail</span>
+        <span>@Config.Instagram</span>
+    </div>
+    <div id="logo" onclick="slowScroll('#top')">
+        <span>@Config.CompanyName</span>
+    </div>
+    <div id="about">
+        <a asp-area="" asp-controller="Home" asp-action="Index">Курсы</a>
+        <a asp-area="" asp-controller="Activities" asp-action="Index" asp-route-id="">Программа</a>
+        <a asp-area="" asp-controller="GalleryUser" asp-action="Index">Галерея</a>
+        <a asp-area="" asp-controller="Timetable" asp-action="Index">Расписание</a>
+    </div>
+</header>

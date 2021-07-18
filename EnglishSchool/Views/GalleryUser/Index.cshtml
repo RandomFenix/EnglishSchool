@@ -1,0 +1,16 @@
+﻿@using EnglishSchool.Data.Entities;
+@model IQueryable<EnglishSchool.Data.Entities.Gallery>
+@{
+    ViewData["Title"] = "HomePage";
+}
+<div id="top">
+    <div id="gallery">
+        @foreach (Gallery entity in Model)
+        {
+            <div class="img">
+                <img src="@entity.ImageURL" alt="">
+                <span>@entity.Title</span>
+            </div>
+        }
+    </div>
+</div>

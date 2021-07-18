@@ -1,0 +1,16 @@
+﻿@using EnglishSchool.Data.Entities;
+@model IQueryable<EnglishSchool.Data.Entities.Course>
+@{
+    ViewData ["Title"] = "HomePage";
+}
+<div id="top">
+    <div id="course">
+        @foreach (Course entity in Model)
+        {
+            <div>
+                @entity.Title - @entity.Description
+            </div>
+        }
+    </div>
+</div>
+
