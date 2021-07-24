@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace EnglishSchool.Controllers
 {
-    [Area("Admin")]
     public class TimetableController : Controller
     {
         public IActionResult Index()

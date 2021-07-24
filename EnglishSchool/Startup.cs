@@ -32,7 +32,6 @@ namespace EnglishSchool
         public void ConfigureServices(IServiceCollection services)
         {
             Configuration.Bind("Project", new Config());
-            services.AddTransient<IActivitiesRepository, EFActivitiesRepository>();
             services.AddTransient<IGalleryRepository, EFGalleryRepository>();
             services.AddTransient<ITextFieldsRepository, EFTextFieldsRepository>();
             services.AddTransient<ICourseRepository, EFCourseRepository>();

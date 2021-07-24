@@ -13,6 +13,7 @@ namespace EnglishSchool.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
+        public DbSet<TextField> TextFields { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -53,6 +54,37 @@ namespace EnglishSchool.Data
                 Id = new Guid("E44B5BD3-FFB0-45A0-A1E5-3D7F8497AFAF"),
                 Title = "Первое фото",
                 ImageURL = "https://images.pexels.com/photos/267669/pexels-photo-267669.jpeg?cs=srgb&dl=pexels-pixabay-267669.jpg&fm=jpg"
+            });
+
+            builder.Entity<TextField>().HasData(new TextField
+            {
+                Id = new Guid("1F2DBF89-4137-487E-9A45-535D002D68C0"),
+                CodeWord = "PageHome",
+                Title = "Курсы"
+            });
+            builder.Entity<TextField>().HasData(new TextField
+            {
+                Id = new Guid("D9AB7AEB-F309-4DDE-986D-18456F6E26B5"),
+                CodeWord = "PageGallegy",
+                Title = "Галерея"
+            });
+            builder.Entity<TextField>().HasData(new TextField
+            {
+                Id = new Guid("A66318D7-27E9-47D4-A461-B3A6CAB89323"),
+                CodeWord = "PageTimetable",
+                Title = "Расписание"
+            });
+            builder.Entity<TextField>().HasData(new TextField
+            {
+                Id = new Guid("FD4880DE-40BF-49E1-87E9-44BC45AE8546"),
+                CodeWord = "PageAbout",
+                Title = "Преподаватель"
+            });
+            builder.Entity<TextField>().HasData(new TextField
+            {
+                Id = new Guid("9E66054E-9230-49E4-A52B-B55A00AF64E3"),
+                CodeWord = "PageRequest",
+                Title = "Заявка"
             });
         }
     }

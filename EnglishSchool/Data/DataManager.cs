@@ -8,14 +8,12 @@ namespace EnglishSchool.Data
 {
     public class DataManager
     {
-        public IActivitiesRepository Activities { get; set; }
         public IGalleryRepository Images { get; set; }
         public ITextFieldsRepository TextFields { get; set; }
         public ICourseRepository Courses { get; set; }
 
-        public DataManager(IActivitiesRepository activitiesRepository, IGalleryRepository galleryRepository, ITextFieldsRepository textFieldsRepository, ICourseRepository courseRepository)
+        public DataManager(IGalleryRepository galleryRepository, ITextFieldsRepository textFieldsRepository, ICourseRepository courseRepository)
         {
-            Activities = activitiesRepository;
             Images = galleryRepository;
             TextFields = textFieldsRepository;
             Courses = courseRepository;

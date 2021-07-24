@@ -63,21 +63,24 @@ header {
   #about {
     width: 100%; } }
 
-#about {
-  width: 100%;
-  text-align: center;
-  font-size: 1em;
-  line-height: 45px;
-  margin-bottom: 10px;
-  word-spacing: 40px;
-  background-color: #00bfff; }
+#control {
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    line-height: 45px;
+    margin-bottom: 10px;
+    word-spacing: 40px;
+    background-color: #00bfff;
+}
 
-#about > a {
-  color: #fff; }
+    #control > a {
+        color: #fff;
+    }
 
-#about > a:hover {
-  color: #ffff00;
-  text-decoration: underline; }
+        #control > a:hover {
+            color: #ffff00;
+            text-decoration: underline;
+        }
 
 /*#about > a:not (:last-child) {
     margin-right: 7%;
@@ -164,42 +167,6 @@ header.fixed #logo {
         height: 500px;
     }
 }
-/* Блок с программой */
-#activities {
-    padding: 100px 20%;
-    width: 60%;
-    float: left;
-    background-color: #f6f6f6;
-    border-top: 2px solid silver;
-    color: #484848;
-    font-size: 1.3em;
-}
-
-@media (min-width: 1401px) {
-  #activities {
-    padding: 100px 20%;
-    width: 60%; } }
-
-@media (max-width: 1400px) {
-  #activities {
-    padding: 100px 10%;
-    width: 80%; } }
-
-@media (max-width: 700px) {
-  #activities div {
-    width: 98% !important;
-    margin-bottom: 20px; } }
-
-#activities div {
-  width: 48%;
-  margin-right: 2%;
-  float: left; }
-
-#activities h2 {
-  font-size: 3em; }
-
-#activities span {
-  color: #a0a0a0; }
 
 /* Блок с галереей */
 #gallery {
@@ -212,7 +179,7 @@ header.fixed #logo {
     width: 100%;
     text-align: center;
     color: #fff;
-    height: 500px;
+    height: 600px;
 }
 
 #gallery h2 {
@@ -333,12 +300,48 @@ h1, h2, h3, h4, h5 {
 
 /* Блок с расписанием */
 #timetable {
-  background-color: #fff;
-  border-top: 2px dashed #e4e3e3;
-  width: 100%;
-  float: left;
-  padding-top: 70px;
-  padding-bottom: 70px; }
+    float: left;
+    background-image: url(/images/ABC.jpg);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 100px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    height: 600px;
+}
+#timetable table {
+    margin-top: 50px;
+    margin-left: 500px;
+    border-collapse: collapse;
+    line-height: 2.1;
+    border-color: #fff;
+}
+caption {
+    font-family: annabelle, cursive;
+    font-weight: bold;
+    font-size: 2em;
+    padding: 10px;
+    color: #F3CD26;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+}
+
+
+th {
+    padding: 10px;
+    border: 1px solid #A9E2CC;
+    height: 10px;
+    width: 20px;
+}
+
+td {
+    font-size: 0.8em;
+    padding: 5px 7px;
+    border: 1px solid #A9E2CC;
+    height: 10px;
+    width: 20px;
+}
 
 @media (min-width: 801px) {
   #timetable div {
@@ -370,6 +373,83 @@ h1, h2, h3, h4, h5 {
   font-size: 0.95em;
   margin-bottom: 40px; }
 
+/* Блок о себе */
+#about {
+    float: left;
+    background-image: url(/images/ABC.jpg);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 100px 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    height: 600px;
+
+}
+
+@media (min-width: 1401px) {
+    #about {
+        padding: 100px 20%;
+        width: 60%;
+    }
+}
+
+@media (max-width: 1400px) {
+    #about {
+        padding: 100px 10%;
+        width: 80%;
+    }
+}
+
+@media (max-width: 700px) {
+    #about div {
+        width: 98% !important;
+        margin-bottom: 20px;
+    }
+}
+
+#about div {
+    width: 48%;
+    margin-right: 2%;
+    float: left;
+}
+
+#about h2 {
+    font-size: 3em;
+}
+
+#about span {
+    color: #a0a0a0;
+}
+#about_text {
+    width: 100%;
+    height: 100%;
+    border: 3px solid;
+    background: #008B8B;
+    padding: 10px;
+    margin: 20px;
+    color: #000000;
+    text-align: justify;
+}
+#about_text .img {
+    float: left;
+    width: 10%;
+    margin-top: 2px;
+    }
+
+
+    #about_text img {
+        background: #fafafa;
+        border: 1px solid silver;
+        max-width: 500px;
+        width: 250px;
+        height: 250px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        object-position: left;
+        float: left;
+    }
 /* Блок с аккаунтом */
 #account {
     float: left;

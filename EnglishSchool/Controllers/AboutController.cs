@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace EnglishSchool.Controllers
 {
-    [Area("Admin")]
-    public class ActivitiesController : Controller
+    public class AboutController : Controller
     {
         public IActionResult Index()
         {
