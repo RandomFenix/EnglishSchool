@@ -10,7 +10,7 @@ namespace EnglishSchool.Data.Repositories.Abstract
     {
         IQueryable<Gallery> GetImages();
         Gallery GetImagesById(Guid id);
-        Guid SaveImage(Gallery entity);
+        void SaveImage(Gallery entity);
         void DeleteImage(Gallery entity);
     }
 }

@@ -11,12 +11,14 @@ namespace EnglishSchool.Data
         public IGalleryRepository Images { get; set; }
         public ITextFieldsRepository TextFields { get; set; }
         public ICourseRepository Courses { get; set; }
+        public ITimetableRepository Events { get; set; }
 
-        public DataManager(IGalleryRepository galleryRepository, ITextFieldsRepository textFieldsRepository, ICourseRepository courseRepository)
+        public DataManager(IGalleryRepository galleryRepository, ITextFieldsRepository textFieldsRepository, ICourseRepository courseRepository, ITimetableRepository dateEventsRepository)
         {
             Images = galleryRepository;
             TextFields = textFieldsRepository;
             Courses = courseRepository;
+            Events = dateEventsRepository;
         }
     }
 }

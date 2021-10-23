@@ -1,64 +1,65 @@
-﻿@using EnglishSchool.Data.Entities;
-@*@model IQueryable<EnglishSchool.Data.Entities>*@
-@{
-    ViewData["Title"] = "EnglishSchool";
-}
-<div id="timetable">
-    <table>
-        <caption>@DateTime.Now.ToString("M") @DateTime.Now.ToString("yyyy")</caption>
-        <tr>
-            <th>Пн</th>
-            <th>Вт</th>
-            <th>Ср</th>
-            <th>Чт</th>
-            <th>Пт</th>
-            <th>Сб</th>
-            <th>Вс</th>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-</div>
+﻿@model CalendarCurrentMonth;
+@inject ApplicationDbContext applicationDbContext;
+@inject DataManager dataManager;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="calendar">
+            <div class="month">
+                <a class="fas fa-angle-left" asp-action="PrevMonth"></a>
+                <div class="date">
+                    <h1>@CalendarCurrentMonth.getMonth</h1>
+                    <p>@CalendarCurrentMonth.getDate</p>
+                </div>
+                <a class="fas fa-angle-right" asp-action="NextMonth"></a>
+            </div>
+            <div class="weekdays">
+                <div>Пн</div>
+                <div>Вт</div>
+                <div>Ср</div>
+                <div>Чт</div>
+                <div>Пт</div>
+                <div>Сб</div>
+                <div>Вос</div>
+            </div>
+            <div class="days">
+                @foreach (var item in CalendarCurrentMonth.GetPrevDays())
+                {
+                    <div>@item</div>
+                }
+                @foreach (var item in CalendarCurrentMonth.GetDays())
+                {
+                    @if (item == DateTime.Now.Day.ToString())
+                    {
+                        <div class="today">@item</div>
+                            }
+                            else if (Convert.ToInt32(item) == applicationDbContext.DateEvents.Select(x => x.Day).First() || CalendarCurrentMonth.getMonth == applicationDbContext.DateEvents.Select(x => x.Month).First())
+                    {
+                        <div class="busyday" title="@applicationDbContext.DateEvents.Where(x => x.Day == Convert.ToInt32(item)).Select(x => x.ChildName).First() @applicationDbContext.DateEvents.Where(x => x.Day == Convert.ToInt32(item)).Select(x => x.Time).First()">@item</div>
+                    }
+                    else
+                    {
+                        <div>@item</div>
+                    }
+                }
+                @foreach (var item in CalendarCurrentMonth.GetNextDays())
+                {
+                    <div>@item</div>
+                }
+            </div>
+        </div>
+    </div>
+    <script src="script/script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+﻿@model SharedModelsToView;
+@{
+    ViewData["Title"] = "EnglishSchool";
+}
+
+<div id="request">
+<form class="decor" asp-action="Index" method="post">
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner">
+        <h3>Отправить заявку</h3>
+        <input asp-for="request.PersonName" placeholder="Введите имя" />
+        <span asp-validation-for="request.PersonName" class="text-danger"></span>
+        <input asp-for="request.PersonSurname" placeholder="Введите фамилию" />
+        <span asp-validation-for="request.PersonSurname" class="text-danger"></span>
+        <input asp-for="request.PersonEmail" placeholder="Введите ваш почтовый ящик" />
+        <span asp-validation-for="request.PersonEmail" class="text-danger"></span>
+        <input asp-for="request.PersonPhone" placeholder="Введите ваш номер телефона" />
+        <span asp-validation-for="request.PersonPhone" class="text-danger"></span>
+        <div>
+            @Html.DropDownListFor(model => model.Courses,
+                          new SelectList(ViewBag.courses, "Value", "Text"),
+                          new { @class = "form-control" }
+                          )
+            <span asp-validation-for="request.NameCourse" class="text-danger"></span>
+        </div>
+        <h1>*Необязательные для ответа вопросы, но они помогут лучше понять вашего ребенка и подстроиться под его интересы</h1>
+        <input asp-for="request.ChildName" placeholder="Введите имя ребенка" />
+        <span asp-validation-for="request.ChildName" class="text-danger"></span>
+        <input asp-for="request.ChildAge" placeholder="Введите возраст ребенка" />
+        <span asp-validation-for="request.ChildAge" class="text-danger"></span>
+        <h1>Знает ли ребенок животных, цвета, цифры, предметы в доме</h1>
+        <div><input asp-for="request.ChildKnowledge" class="form-control" type="checkbox" name="name" value="" /><label> Да, отлично знает</label></div>
+        <div><input asp-for="request.ChildKnowledge" class="form-control" type="checkbox" name="name" value="" /><label> Немного</label></div>
+        <div><input asp-for="request.ChildKnowledge" class="form-control" type="checkbox" name="name" value="" /><label> Скорее нет, чем да</label></div>
+        <span asp-validation-for="request.ChildKnowledge" class="text-danger"></span>
+        <input asp-for="request.ChildHobby" placeholder="Любимые хобби ребенка" />
+        <span asp-validation-for="request.ChildHobby" class="text-danger"></span>
+        <input asp-for="request.FavouriteCharacter" placeholder="Любимый анимационный персонаж" />
+        <span asp-validation-for="request.FavouriteCharacter" class="text-danger"></span>
+        <input asp-for="request.ThingsNotLike" placeholder="Вещи, которые ребенок не любит"/>
+        <span asp-validation-for="request.ThingsNotLike" class="text-danger"></span>
+        <input type="submit" asp-controller="Request" asp-action="SendRequest" value="Оставить заявку" />
+</form>
+</div>

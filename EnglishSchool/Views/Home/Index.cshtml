@@ -1,16 +1,164 @@
-﻿@using EnglishSchool.Data.Entities;
-@model IQueryable<EnglishSchool.Data.Entities.Course>
+﻿@*@using static EnglishSchool.Data.Entities.Alphabet;*@
+@model SharedModelsToView;
 @{
     ViewData ["Title"] = "EnglishSchool";
 }
-<div id="top">
-    <div id="course">
-        @foreach (Course entity in Model)
-        {
-            <div>
-                @entity.Title - @entity.Description
-            </div>
-        }
-    </div>
-</div>
 
+<div id="home">
+    <form asp-action="Index" method="post">
+        <input type="checkbox" id="side-checkbox" />
+        <div class="side-panel">
+            <label class="side-button-2" for="side-checkbox">+</label>
+            <div class="side-title">Заявка</div>
+            <input asp-for="request.PersonName" placeholder="Введите имя" />
+            <span asp-validation-for="request.PersonName" class="text-danger"></span>
+            <input asp-for="request.PersonSurname" placeholder="Введите фамилию" />
+            <span asp-validation-for="request.PersonSurname" class="text-danger"></span>
+            <input asp-for="request.PersonEmail" placeholder="Введите ваш почтовый ящик" />
+            <span asp-validation-for="request.PersonEmail" class="text-danger"></span>
+            <input asp-for="request.PersonPhone" placeholder="Введите ваш номер телефона" />
+            <span asp-validation-for="request.PersonPhone" class="text-danger"></span>
+            <div>
+                @Html.DropDownListFor(model => model.Courses,
+                              new SelectList(ViewBag.courses, "Value", "Text"),
+                              new { @class = "form-control" }
+                              )
+                <span asp-validation-for="request.NameCourse" class="text-danger"></span>
+            </div>
+            <h1>*Необязательные для ответа вопросы, но они помогут лучше понять вашего ребенка и подстроиться под его интересы</h1>
+            <input asp-for="request.ChildName" placeholder="Введите имя ребенка" />
+            <span asp-validation-for="request.ChildName" class="text-danger"></span>
+            <input asp-for="request.ChildAge" placeholder="Введите возраст ребенка" />
+            <span asp-validation-for="request.ChildAge" class="text-danger"></span>
+            <h1>Знает ли ребенок животных, цвета, цифры, предметы в доме</h1>
+            <div><input asp-for="request.ChildKnowledge" class="form-control" type="checkbox" name="name" value="" /><label> Да, отлично знает</label></div>
+            <div><input asp-for="request.ChildKnowledge" class="form-control" type="checkbox" name="name" value="" /><label> Немного</label></div>
+            <div><input asp-for="request.ChildKnowledge" class="form-control" type="checkbox" name="name" value="" /><label> Скорее нет, чем да</label></div>
+            <span asp-validation-for="request.ChildKnowledge" class="text-danger"></span>
+            <input asp-for="request.ChildHobby" placeholder="Любимые хобби ребенка" />
+            <span asp-validation-for="request.ChildHobby" class="text-danger"></span>
+            <input asp-for="request.FavouriteCharacter" placeholder="Любимый анимационный персонаж" />
+            <span asp-validation-for="request.FavouriteCharacter" class="text-danger"></span>
+            <input asp-for="request.ThingsNotLike" placeholder="Вещи, которые ребенок не любит" />
+            <span asp-validation-for="request.ThingsNotLike" class="text-danger"></span>
+            <br />
+            <input type="submit" asp-controller="Request" asp-action="SendRequest" value="Отправить" />
+        </div>
+        <div class="side-button-1-wr">
+            <label class="side-button-1" for="side-checkbox">
+                <div class="side-b side-open">Отправить заявку</div>
+                <div class="side-b side-close">Закрыть</div>
+            </label>
+        </div>
+    </form>
+
+
+
+    @*@for (int i = 0; i < ABC.Count; i++)
+    {
+        <div class="post-wrap">
+            <div class="post-item">
+                <div class="item-content">
+                    <div class="item-icon">@ABC[i]</div>
+                    <div class="item-body">
+                        <h3>@rusSounds[i]</h3>
+                        <p>@transcriptions[i]</p>
+                    </div>
+                    <div class="item-footer">
+                        <a href="#" class="link"><span>@words[i]</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+     }*@
+        @*<div class="post-wrap">
+        <div class="post-item">
+            <div class="item-content">
+                <div class="item-icon group"></div>
+                <div class="item-body">
+                    <h3>Эй</h3>
+                    <p>[ei]</p>
+                </div>
+                <div class="item-footer">
+                    <a href="#" class="link"><span>Apple</span></a>
+                </div>
+            </div>
+        </div>*@
+
+        @*<div class="post-item">
+            <div class="item-content">
+                <div class="item-icon tree"></div>
+                <div class="item-body">
+                    <h3>Блок 2</h3>
+                    <p>Описание блока 2</p>
+                </div>
+                <div class="item-footer">
+                    <a href="#" class="link"><span>Подробнее</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-item">
+            <div class="item-content">
+                <div class="item-icon anchor"></div>
+                <div class="item-body">
+                    <h3>Блок 3</h3>
+                    <p>Описание блока 3</p>
+                </div>
+                <div class="item-footer">
+                    <a href="#" class="link"><span>Подробнее</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-item">
+            <div class="item-content">
+                <div class="item-icon video"></div>
+                <div class="item-body">
+                    <h3>Блок 4</h3>
+                    <p>Описание блока 4</p>
+                </div>
+                <div class="item-footer">
+                    <a href="#" class="link"><span>Подробнее</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-item">
+            <div class="item-content">
+                <div class="item-icon photo"></div>
+                <div class="item-body">
+                    <h3>Блок 5</h3>
+                    <p>Описание блока 5</p>
+                </div>
+                <div class="item-footer">
+                    <a href="#" class="link"><span>Подробнее</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-item">
+            <div class="item-content">
+                <div class="item-icon gift"></div>
+                <div class="item-body">
+                    <h3>Блок 6</h3>
+                    <p>Описание блока 6</p>
+                </div>
+                <div class="item-footer">
+                    <a href="#" class="link"><span>Подробнее</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="post-item">
+            <div class="item-content">
+                <div class="item-icon group"></div>
+                <div class="item-body">
+                    <h3>Эй</h3>
+                    <p>[ei]</p>
+                </div>
+                <div class="item-footer">
+                    <a href="#" class="link"><span>Apple</span></a>
+                </div>
+            </div>
+        </div>*@
+</div>

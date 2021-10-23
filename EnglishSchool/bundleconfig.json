@@ -1,8 +1,4 @@
-[
-  {
-    "outputFileName": "wwwroot/js/scripts.js",
-    "inputFiles": [
-      
-    ]
-  }
-]
+{
+  "outputFileName": "wwwroot/js/scripts.js",
+  "inputFiles": [ "wwwroot/js/site.js" ]
+}

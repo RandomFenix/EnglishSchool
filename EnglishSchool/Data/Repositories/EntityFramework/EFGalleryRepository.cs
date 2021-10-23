@@ -25,14 +25,13 @@ namespace EnglishSchool.Data.Repositories.EntityFramework
             return applicationDbContext.Galleries.FirstOrDefault(image => image.Id == id);
         }
 
-        public Guid SaveImage(Gallery entity)
+        public void SaveImage(Gallery entity)
         {
             if (entity.Id == default)
                 applicationDbContext.Entry(entity).State = EntityState.Added;
             else
                 applicationDbContext.Entry(entity).State = EntityState.Modified;
             applicationDbContext.SaveChanges();
-            return entity.Id;
         }
 
         public void DeleteImage(Gallery entity)

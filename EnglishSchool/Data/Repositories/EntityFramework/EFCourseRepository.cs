@@ -20,20 +20,18 @@ namespace EnglishSchool.Data.Repositories.EntityFramework
             return applicationDbContext.Courses.OrderBy(course => course.Title);
         }
 
-        public async Task<Course> GetCourseByIdAsync(Guid id)
+        public Course GetCourseById(Guid id)
         {
-            Course result = await applicationDbContext.Courses.FirstOrDefaultAsync(course => course.Id == id);
-            return result;
+            return applicationDbContext.Courses.FirstOrDefault(course => course.Id == id);
         }
 
-        public Guid SaveCourse(Course entity)
+        public void SaveCourse(Course entity)
         {
             if (entity.Id == default)
                 applicationDbContext.Entry(entity).State = EntityState.Added;
             else
                 applicationDbContext.Entry(entity).State = EntityState.Modified;
             applicationDbContext.SaveChanges();
-            return entity.Id;
         }
 
         public void DeleteCourse(Course entity)

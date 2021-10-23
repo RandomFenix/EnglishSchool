@@ -98,14 +98,14 @@ namespace EnglishSchool.Migrations
                         new
                         {
                             Id = new Guid("1f2dbf89-4137-487e-9a45-535d002d68c0"),
-                            CodeWord = "PageHome",
+                            CodeWord = "PageCourse",
                             Text = "заполняется администратором",
                             Title = "Курсы"
                         },
                         new
                         {
                             Id = new Guid("d9ab7aeb-f309-4dde-986d-18456f6e26b5"),
-                            CodeWord = "PageGallegy",
+                            CodeWord = "PageGallery",
                             Text = "заполняется администратором",
                             Title = "Галерея"
                         },
@@ -130,6 +130,29 @@ namespace EnglishSchool.Migrations
                             Text = "заполняется администратором",
                             Title = "Заявка"
                         });
+                });
+
+            modelBuilder.Entity("EnglishSchool.Data.Entities.Timetable", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ChildName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Day")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Month")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DateEvents");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -162,7 +185,7 @@ namespace EnglishSchool.Migrations
                         new
                         {
                             Id = "047E7E08-BA55-4BB3-A7B8-3426AD2884D2",
-                            ConcurrencyStamp = "07059a3e-3111-4768-892b-65a2da20fe60",
+                            ConcurrencyStamp = "cc5e8788-8a2a-468e-9df2-285b355d1dde",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -261,13 +284,13 @@ namespace EnglishSchool.Migrations
                         {
                             Id = "3DF7F7A1-CA6D-450C-8D23-368958CA5904",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "af88d846-5dcd-4cf3-bb61-54f373cb5097",
+                            ConcurrencyStamp = "9ab9f374-b769-45c9-9f15-efffdd899b0d",
                             Email = "my@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MY@EMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFzLtbubZQD/AC1qygLyO+fbF7EHUBwRXz3hTwnQcWUEctopzBwn+wE8tsvgMurz7w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDUQl4uU3OokW1Gz42T2qcdeEC0GgoJnwXtOOBFYfF4HuKM2RZB3HFXACLFPZ/S+1A==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

@@ -1,0 +1,26 @@
+﻿@using EnglishSchool.Data.Entities;
+@model IQueryable<EnglishSchool.Data.Entities.Timetable>
+@{
+    ViewData["Title"] = "EnglishSchool.Admin";
+}
+<div id="top">
+    <div id="gallery">
+        <a asp-area="Admin" asp-controller="Timetable" asp-action="TimetableEdit">Новое фото</a>
+    </div>
+    <div>
+        @foreach (Timetable entity in Model)
+        {
+        <div>
+            <span>@entity.ChildName - @entity.Day - @entity.Month - @entity.Time</span>
+            <br />
+            |
+            <a asp-area="Admin" asp-controller="Timetable" asp-action="TimetableEdit" asp-route-id="@entity.Id">редактировать</a>
+            |
+            <form method="post" asp-controller="Timetable" asp-action="DeleteEvent">
+                <input type="hidden" name="id" value="@entity.Id" />
+                <input type="submit" value="удалить" />
+            </form>
+        </div>
+        }
+    </div>
+</div>

@@ -9,8 +9,8 @@ namespace EnglishSchool.Data.Repositories.Abstract
     public interface ICourseRepository
     {
         IQueryable<Course> GetCourses();
-        Task<Course> GetCourseByIdAsync(Guid id);
-        Guid SaveCourse(Course entity);
+        Course GetCourseById(Guid id);
+        void SaveCourse(Course entity);
         void DeleteCourse(Course entity);
     }
 }

@@ -4,6 +4,7 @@ using EnglishSchool.Data.Repositories.EntityFramework;
 using EnglishSchool.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -35,8 +36,9 @@ namespace EnglishSchool
             services.AddTransient<IGalleryRepository, EFGalleryRepository>();
             services.AddTransient<ITextFieldsRepository, EFTextFieldsRepository>();
             services.AddTransient<ICourseRepository, EFCourseRepository>();
+            services.AddTransient<ITimetableRepository, EFTimetableRepository>();
             services.AddTransient<DataManager>();
-
+            
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Config.ConnectionString));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -96,11 +98,11 @@ namespace EnglishSchool
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute(
                     name: "admin",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

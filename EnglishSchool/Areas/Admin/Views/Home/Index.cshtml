@@ -1,73 +1,37 @@
-﻿@using EnglishSchool.Data.Entities;
-@model IQueryable<EnglishSchool.Data.Entities.Course>
+﻿@model IQueryable<EnglishSchool.Data.Entities.Course>
 @{
-    ViewData["Title"] = "HomePage";
+    ViewData["Title"] = "EnglishSchool.Admin";
 }
 <div id="top">
-    <div id="course">
-        <a asp-area="Admin" asp-controller="Home" asp-action="CoursesEdit">Новый курс</a>
-    </div>
-    <div>
+    <div id="edit">
+        <a asp-area="Admin" asp-controller="Course" asp-action="CoursesEdit" asp-route-id="">Новый курс</a>
+        <a asp-area="Admin" asp-controller="Gallery" asp-action="GalleryEdit" asp-route-id="">Новое изображение</a>
+        <a asp-area="Admin" asp-controller="Timetable" asp-action="TimetableEdit" asp-route-id="">Редактировать расписание</a>
+        <a asp-area="Admin" asp-controller="About" asp-action="AboutEdit" asp-route-id="">Редактировать о себе</a>
         @foreach (Course entity in Model)
         {
             <div>
                 @entity.Title - @entity.Description
                 <br />
                 |
-                <a asp-area="Admin" asp-controller="Home" asp-action="CoursesEdit" asp-route-id="@entity.Id">редактировать</a>
+                <a asp-area="Admin" asp-controller="Course" asp-action="CoursesEdit" asp-route-id="@entity.Id">редактировать</a>
                 |
-                <form method="post" asp-controller="Home" asp-action="CourseDelete">
+                <form method="post" asp-controller="Course" asp-action="CourseDelete">
                     <input type="hidden" name="id" value="@entity.Id" />
                     <input type="submit" value="удалить" />
                 </form>
             </div>
         }
+        <h3>Редактировать страницы сайта</h3>
+        <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageCourse">Курсы</a>
+        <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageGallery">Наши услуги</a>
+        <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageTimetable">Расписание</a>
+        <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageAbout">Преподаватель</a>
+        <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageRequest">Заявка</a>
+    </div>
+    <div class="div-box">
+        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+            <input type="submit" value="Выйти" />
+        </form>
     </div>
 </div>
-
-@*@model IQueryable<ServiceItem>
-    @{
-        string strTitle = "Панель администратора";
-        ViewBag.Title = strTitle;
-    }
-
-    <div>
-        <h2>@strTitle</h2>
-        <div>
-            <h3>Наши услуги</h3>
-            <div class="div-box">
-                <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="">Добавить услугу</a>
-            </div>
-            @if (Model.Any())
-            {
-                <div>
-                    @foreach (ServiceItem entity in Model)
-                    {
-                        <div>
-                            <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="@entity.Id">редактировать</a>
-                            |
-                            <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="ServiceItems" asp-action="Delete" method="post">
-                                <input type="hidden" name="id" value="@entity.Id">
-                                <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">удалить</a>
-                            </form>
-                            |
-                            <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                                @($"{entity.Title}")
-                            </a>
-                        </div>
-                    }
-                </div>
-            }
-        </div>
-        <div class="div-box">
-            <h3>Редактировать страницы сайта</h3>
-            <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageIndex">Главная</a>
-            <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageServices">Наши услуги</a>
-            <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageContacts">Контакты</a>
-        </div>
-        <div class="div-box">
-            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
-                <input type="submit" value="Выйти" />
-            </form>
-        </div>
-    </div>*@

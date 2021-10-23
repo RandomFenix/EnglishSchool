@@ -1,0 +1,52 @@
+﻿@model Timetable;
+@{
+    ViewData["Title"] = "EnglishSchool";
+    Timetable timetable = new Timetable();
+}
+
+<div id="edit">
+    <h1>Заполнить день</h1>
+    <div>
+        <form asp-area="Admin" asp-controller="Timetable" asp-action="TimetableEdit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="All">
+            </div>
+
+            <div>
+                <label asp-for="ChildName"></label>
+                <input asp-for="ChildName" />
+                <span asp-validation-for="ChildName"></span>
+            </div>
+            <div>
+                <label asp-for="Day"></label>
+                <select asp-for="Day">
+                    @for (int i = 1; i < DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month); i++)
+                    {
+                        timetable.Days.Add(i);
+                    }
+                    @foreach (var item in timetable.Days)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+                <span asp-validation-for="Day"></span>
+            </div>
+            <div>
+                <label asp-for="Month"></label>
+                <select asp-for="Month">
+                    @foreach (var item in timetable.Months)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+                <span asp-validation-for="Month"></span>
+            </div>
+            <div>
+                <label asp-for="Time"></label>
+                <textarea asp-for="Time"></textarea>
+                <span asp-validation-for="Time"></span>
+            </div>
+            <input type="submit" value="Заполнить день" />
+        </form>
+    </div>
+</div>

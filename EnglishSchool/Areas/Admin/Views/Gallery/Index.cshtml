@@ -1,11 +1,11 @@
 ﻿@using EnglishSchool.Data.Entities;
 @model IQueryable<EnglishSchool.Data.Entities.Gallery>
 @{
-    ViewData["Title"] = "HomePage";
+    ViewData["Title"] = "EnglishSchool.Admin";
 }
 <div id="top">
     <div id="gallery">
-    <a asp-area="Admin" asp-controller="Gallery" asp-action="GalleryEdit">Новое фото</a>
+        <a asp-area="Admin" asp-controller="Gallery" asp-action="GalleryEdit">Новое фото</a>
     </div>
     <div>
         @foreach (Gallery entity in Model)

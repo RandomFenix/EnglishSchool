@@ -1,0 +1,52 @@
+﻿@model CalendarPrevMonth;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="calendar">
+            <div class="month">
+                <a></a>
+                <div class="date">
+                    <h1>@CalendarPrevMonth.GetMonth()</h1>
+                    <p>@CalendarPrevMonth.getDate</p>
+                </div>
+                <a class="fas fa-angle-right next" asp-action="Index"></a>
+            </div>
+            <div class="weekdays">
+                <div>Пн</div>
+                <div>Вт</div>
+                <div>Ср</div>
+                <div>Чт</div>
+                <div>Пт</div>
+                <div>Сб</div>
+                <div>Вос</div>
+            </div>
+            <div class="days">
+                @foreach (var item in CalendarPrevMonth.GetPrevDays())
+                {
+                    <div>@item</div>
+                }
+                @foreach (var item in CalendarPrevMonth.GetDays())
+                {
+                    <div>@item</div>
+                }
+                @foreach (var item in CalendarPrevMonth.GetNextDays())
+                {
+                    <div>@item</div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

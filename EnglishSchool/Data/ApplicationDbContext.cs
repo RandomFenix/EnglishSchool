@@ -14,6 +14,7 @@ namespace EnglishSchool.Data
         public DbSet<Course> Courses { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<TextField> TextFields { get; set; }
+        public DbSet<Timetable> DateEvents { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -59,13 +60,13 @@ namespace EnglishSchool.Data
             builder.Entity<TextField>().HasData(new TextField
             {
                 Id = new Guid("1F2DBF89-4137-487E-9A45-535D002D68C0"),
-                CodeWord = "PageHome",
+                CodeWord = "PageCourse",
                 Title = "Курсы"
             });
             builder.Entity<TextField>().HasData(new TextField
             {
                 Id = new Guid("D9AB7AEB-F309-4DDE-986D-18456F6E26B5"),
-                CodeWord = "PageGallegy",
+                CodeWord = "PageGallery",
                 Title = "Галерея"
             });
             builder.Entity<TextField>().HasData(new TextField
